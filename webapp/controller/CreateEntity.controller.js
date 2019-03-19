@@ -53,7 +53,7 @@ sap.ui.define([
 			}
 		},
 
-		
+	//	
 		handleTableSelectDialogPress: function(oEvent) {
 			if (!this._oDialog) {
 				this._oDialog = sap.ui.xmlfragment("YVEGUI0004.view.VHDialog", this);
