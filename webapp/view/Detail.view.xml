@@ -1,0 +1,54 @@
+<mvc:View controllerName="YVEGUI0004.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}"
+		busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{Belnr}">
+				<attributes>
+					<ObjectAttribute title="Invoice Number " text="{Guino}" />
+					<ObjectAttribute title="Base Amount  " text="{Basamt}" />
+				</attributes>
+					<statuses>
+						<ObjectStatus title="Customer " text="{Belnr}"/>
+					</statuses>
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar" select = "handleInconTabBarSelect" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}" key="Date">
+						<f:SimpleForm width="auto" class="sapUiResponsiveMargin" 
+						              emptySpanL="10" emptySpanM="4" columnsL="1" columnsM="1">
+							<f:content>
+							 <Label text="Customer Name"/><Text text="{Kunnr}"/>
+							 <Label text="Buyer Name"/><Text text="{Buyname1}"/>
+							 <Label text="Buyer Registration"/><Text text="{Buyscd}"/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" tooltip="{i18n>detailIconTabBarAttachments}" key="pdf">
+						<PDFViewer source="{detailView>/Source}" title="{detailView>/Title}" height="{detailView>/Height}">
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+						</PDFViewer>
+					</IconTabFilter>
+			     
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:editAction>
+			<semantic:EditAction id="edit" press="onEdit"/>
+		</semantic:editAction>
+		<semantic:customFooterContent>
+			<Button enabled="true" id="deleteButton" press="onDelete" text="Delete"/>
+		</semantic:customFooterContent>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:DetailPage>
+</mvc:View>
