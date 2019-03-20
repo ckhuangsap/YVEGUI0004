@@ -11,6 +11,10 @@
 		</semantic:subHeader>
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
+				<Button
+					text="Search Contains"
+					icon="sap-icon://filter"
+					press="handleOpenDialogSearchContains" />
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
 			<List id="list"
 				items="{ path: '/YEGUI0004_STRSet', sorter: { path: 'Guino', descending: false }, groupHeaderFactory: '.createGroupHeader' }"

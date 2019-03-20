@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		
+		confirm="handleClose"
+		cancel="handleClose"
+			
+			>
+		<filterItems>
+			<ViewSettingsFilterItem text="Bukrs" key="Bukrs"  items="{path: '/AceBukrsSet'}">
+				<items>
+					<ViewSettingsItem key="{Bukrs}" text="{Text}"/>
+				
+				</items>
+			</ViewSettingsFilterItem>
+			
+				<ViewSettingsFilterItem text="Belnr" key="Belnr"  items="{path: '/AceBukrsSet'}">
+				<items>
+					<ViewSettingsItem key="{Bukrs}" text="{Text}"/>
+				
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

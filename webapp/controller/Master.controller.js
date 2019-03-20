@@ -59,6 +59,41 @@ sap.ui.define([
 			this.getRouter().attachBypassed(this.onBypassed, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
 		},
+		
+			_getDialog : function () {
+			if (!this._oDialog) {
+				this._oDialog = sap.ui.xmlfragment("YVEGUI0004.view.Dialog", this);
+				this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		},
+		handleOpenDialogSearchContains: function () {
+			this._getDialog()
+				.setFilterSearchCallback(null)
+				.setFilterSearchOperator(sap.m.StringFilterOperator.Contains)
+				.open();
+		},
+ 
+			handleSearch: function(oEvent) {
+			var sValue = oEvent.getParameter("value");
+			var oFilter = new Filter("Bukrs", sap.ui.model.FilterOperator.Contains, sValue);
+			var oBinding = oEvent.getSource().getBinding("items");
+			oBinding.filter([oFilter]);
+		},
+		handleClose: function(oEvent) {
+			var aContexts = oEvent.getParameter("filterCompoundKeys");
+
+			var aBukrs = aContexts.Bukrs;
+			var afilters = [];  
+			for (var kData in aBukrs) {
+			  var zcheck = aBukrs[kData];
+			  if(zcheck == true){
+			  		afilters.push(new sap.ui.model.Filter("Bukrs", "EQ", kData));
+			  }
+			}
+		this._oList.getBinding("items").filter(afilters);
+
+		},		
 
 		/* =========================================================== */
 		/* event handlers                                              */
