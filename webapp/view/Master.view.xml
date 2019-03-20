@@ -11,10 +11,7 @@
 		</semantic:subHeader>
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
-				<Button
-					text="Search Contains"
-					icon="sap-icon://filter"
-					press="handleOpenDialogSearchContains" />
+			
 			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
 			<List id="list"
 				items="{ path: '/YEGUI0004_STRSet', sorter: { path: 'Guino', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
@@ -26,6 +23,14 @@
 						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
 					</Toolbar>
 				</infoToolbar>
+				<headerToolbar>
+					<Toolbar>
+						<Title text="" level="H2"/>
+						<ToolbarSpacer/>
+						<Button tooltip="View Filter Settings" icon="sap-icon://filter" press="handleOpenDialogSearchContains"/>
+					
+					</Toolbar>
+				</headerToolbar>
 				<items>
 					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="{Guino}"></ObjectListItem>
 				</items>
